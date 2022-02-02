@@ -20,3 +20,13 @@ Route::get('/', function () {
 
 //Rotas Administrador
 Route::get('/dashboard', [AdminController::class, 'dashboard'])->middleware('auth');
+//Visualizar
+Route::get('/admin/estudantes', [AdminController::class, 'estudantes'])->middleware('auth');
+//Criar
+Route::get('/admin/create', [AdminController::class, 'create'])->middleware('auth');
+Route::post('/admin', [AdminController::class, 'store']);
+//Excluir
+Route::delete('/admin/estudantes/{id}', [AdminController::class, 'destroy'])->middleware('auth');
+//Editar
+Route::get('/admin/edit/{id}', [AdminController::class, 'edit'])->middleware('auth');
+Route::put('/admin/update/{id}', [AdminController::class, 'update'])->middleware('auth');
