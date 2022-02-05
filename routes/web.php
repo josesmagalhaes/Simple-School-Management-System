@@ -18,8 +18,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//Rotas Administrador
+//Rota Principal
 Route::get('/dashboard', [AdminController::class, 'dashboard'])->middleware('auth');
+//Rotas Estudantes
 //Visualizar
 Route::get('/admin/estudantes', [AdminController::class, 'estudantes'])->middleware('auth');
 //Criar
@@ -30,3 +31,15 @@ Route::delete('/admin/estudantes/{id}', [AdminController::class, 'destroy'])->mi
 //Editar
 Route::get('/admin/edit/{id}', [AdminController::class, 'edit'])->middleware('auth');
 Route::put('/admin/update/{id}', [AdminController::class, 'update'])->middleware('auth');
+
+//Rotas Professores
+//Visualizar
+Route::get('/admin/professores', [AdminController::class, 'professores'])->middleware('auth');
+//Criar
+Route::get('/admin/create_professor', [AdminController::class, 'create_professor'])->middleware('auth');
+Route::post('/admin', [AdminController::class, 'store_professor']);
+//Excluir
+Route::delete('/admin/professores/{id}', [AdminController::class, 'destroy_professor'])->middleware('auth');
+//Editar
+Route::get('/admin/edit_professor/{id}', [AdminController::class, 'edit_professor'])->middleware('auth');
+Route::put('/admin/update_professor/{id}', [AdminController::class, 'update_professor'])->middleware('auth');

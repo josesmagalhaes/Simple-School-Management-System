@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Estudantes;
+use App\Models\Professore;
 
 class AdminController extends Controller
 {
@@ -59,6 +60,60 @@ class AdminController extends Controller
 
         return redirect('/admin/estudantes')->with('msg', 'Estudante editado com sucesso!');
 
-    }           
+    } 
+    public function professores() {
+
+        $professores = Professore::all();
+
+        return view('admin.professores', ['professores'=> $professores]);
+
+    } 
+    public function create_professor() {
+
+        return view('admin.create_professor');
+
+    } 
+
+    public function store_professor(Request $request){
+
+        $professor = new Professore;
+
+        $professor->nome = $request->nome;
+        $professor->cpf = $request->cpf;
+        $professor->data_nascimento = $request->data_nascimento;
+        $professor->formacao = $request->formacao;
+
+        $professor->save();
+
+        return redirect('/admin/professores')->with('msg', 'Professor inserido com sucesso!');
+
+    }  
+
+    public function destroy_professor($id) {
+
+        Professore::findOrFail($id)->delete();
+
+        return redirect('/admin/professores')->with('msg', 'Professor excluído com sucesso!');
+
+    }  
+
+    public function edit_professor($id) {
+
+        $professores = Professore::findOrFail($id);
+
+        return view('admin.edit_professor', ['professor' => $professores]);
+
+    }  
+
+    public function update_professor(Request $request) {
+
+        $data = $request->all();
+
+        Professore::findOrFail($request->id)->update($data);
+
+        return redirect('/admin/professores')->with('msg', 'Professor editado com sucesso!');
+
+    }      
+
 
 }
