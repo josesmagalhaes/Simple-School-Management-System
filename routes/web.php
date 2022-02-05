@@ -43,3 +43,15 @@ Route::delete('/admin/professores/{id}', [AdminController::class, 'destroy_profe
 //Editar
 Route::get('/admin/edit_professor/{id}', [AdminController::class, 'edit_professor'])->middleware('auth');
 Route::put('/admin/update_professor/{id}', [AdminController::class, 'update_professor'])->middleware('auth');
+
+//Rotas Funcionários
+//Visualizar
+Route::get('/admin/funcionarios', [AdminController::class, 'funcionarios'])->middleware('auth');
+//Criar
+Route::get('/admin/create_funcionario', [AdminController::class, 'create_funcionario'])->middleware('auth');
+Route::post('/admin', [AdminController::class, 'store_funcionario']);
+//Excluir
+Route::delete('/admin/funcionarios/{id}', [AdminController::class, 'destroy_funcionario'])->middleware('auth');
+//Editar
+Route::get('/admin/edit_funcionario/{id}', [AdminController::class, 'edit_funcionario'])->middleware('auth');
+Route::put('/admin/update_funcionario/{id}', [AdminController::class, 'update_funcionario'])->middleware('auth');

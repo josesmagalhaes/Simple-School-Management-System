@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Estudantes;
 use App\Models\Professore;
+use App\Models\Funcionario;
 
 class AdminController extends Controller
 {
@@ -114,6 +115,55 @@ class AdminController extends Controller
         return redirect('/admin/professores')->with('msg', 'Professor editado com sucesso!');
 
     }      
+
+    public function funcionarios() {
+
+        $funcionarios = Funcionario::all();
+
+        return view('admin.funcionarios', ['funcionarios'=> $funcionarios]);
+
+    }  
+    public function create_funcionario() {
+
+        return view('admin.create_funcionario');
+
+    } 
+    public function store_funcionario(Request $request){
+
+        $funcionario = new Funcionario;
+
+        $funcionario->nome = $request->nome;
+        $funcionario->cpf = $request->cpf;
+        $funcionario->data_nascimento = $request->data_nascimento;
+
+        $funcionario->save();
+
+        return redirect('/admin/funcionarios')->with('msg', 'Funcionário inserido com sucesso!');
+
+    } 
+    public function destroy_funcionario($id) {
+
+        Funcionario::findOrFail($id)->delete();
+
+        return redirect('/admin/funcionarios')->with('msg', 'Funcionário excluído com sucesso!');
+
+    }
+    public function edit_funcionario($id) {
+
+        $funcionarios = Funcionario::findOrFail($id);
+
+        return view('admin.edit_funcionario', ['funcionario' => $funcionarios]);
+
+    } 
+    public function update_funcionario(Request $request) {
+
+        $data = $request->all();
+
+        Funcionario::findOrFail($request->id)->update($data);
+
+        return redirect('/admin/funcionarios')->with('msg', 'Funcionário editado com sucesso!');
+
+    }  
 
 
 }
