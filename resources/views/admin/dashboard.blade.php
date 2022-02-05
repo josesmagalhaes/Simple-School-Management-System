@@ -19,7 +19,7 @@
                     <div class="col-7 col-md-8">
                         <div class="numbers">
                         <p class="card-category">Estudantes</p>
-                        <p class="card-title">0<p>
+                        <p class="card-title">{{ $count_estudantes }}<p>
                         </div>
                     </div>
                     </div>
@@ -45,7 +45,7 @@
                     <div class="col-7 col-md-8">
                         <div class="numbers">
                         <p class="card-category">Professores</p>
-                        <p class="card-title">0<p>
+                        <p class="card-title">{{ $count_professores }}<p>
                         </div>
                     </div>
                     </div>
@@ -71,7 +71,7 @@
                     <div class="col-7 col-md-8">
                         <div class="numbers">
                         <p class="card-category">Funcionários</p>
-                        <p class="card-title">0<p>
+                        <p class="card-title">{{ $count_funcionarios }}<p>
                         </div>
                     </div>
                     </div>
@@ -97,7 +97,7 @@
                     <div class="col-7 col-md-8">
                         <div class="numbers">
                         <p class="card-category">Recursos Humanos</p>
-                        <p class="card-title">0<p>
+                        <p class="card-title">{{ $count_estudantes + $count_professores + $count_funcionarios}}<p>
                         </div>
                     </div>
                     </div>

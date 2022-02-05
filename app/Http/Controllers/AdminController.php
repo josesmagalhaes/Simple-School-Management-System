@@ -11,7 +11,12 @@ class AdminController extends Controller
 {
     public function dashboard() {
 
-        return view('admin.dashboard');
+        $count_estudantes = Estudantes::all()->count();
+        $count_professores = Professore::all()->count();
+        $count_funcionarios = Funcionario::all()->count();
+        return view('admin.dashboard', ['count_estudantes'=>$count_estudantes,
+        'count_professores'=>$count_professores,
+         'count_funcionarios'=>$count_funcionarios]);
 
     }
 
@@ -97,7 +102,7 @@ class AdminController extends Controller
         return redirect('/admin/professores')->with('msg', 'Professor excluído com sucesso!');
 
     }  
-
+    
     public function edit_professor($id) {
 
         $professores = Professore::findOrFail($id);
