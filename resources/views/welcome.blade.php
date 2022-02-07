@@ -38,7 +38,7 @@
               Este projeto pode servir de base para algo ainda maior, como controle de frequências, notas, diários onlines e tudo mais que fizer parte de uma rotina escolar.  
               </p>
               <hr>
-              <p class="mb-4">Para entrar, faça <a href="/login">login.</a></p>
+              <p class="mb-4">Para entrar, faça <a href="/login">login.</a> ou <a href="/register">registre-se.</a></p>
               </div>
             </div>
           </div>
